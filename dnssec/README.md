@@ -1,6 +1,6 @@
 # Tâche 4 — DNSSEC et validation cryptographique
 
-**Responsable :** Nour Bouchniba · **Dépend de :** Ilef (zone `lab.test`, BIND9), Malek (Unbound)
+**Responsable :** Mariem Cherif · **Dépend de :** Ilef (zone `lab.test`, BIND9), Malek (Unbound)
 **Fournit à :** Malek (zone signée + ancre de confiance), Yasmine (mesures avec/sans validation)
 
 Objectif : le Resolver ne se contente plus de renvoyer une IP, il **vérifie l'authenticité**
