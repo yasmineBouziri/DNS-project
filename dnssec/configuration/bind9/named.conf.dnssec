@@ -1,0 +1,14 @@
+// Extrait à intégrer dans /etc/bind/named.conf.local du PRIMARY (10.10.10.30).
+// Remplace la déclaration "zone lab.test" d'Ilef : seul le "file" change,
+// on sert la version signée produite par dnssec/scripts/02-sign-zone.sh.
+zone "lab.test" {
+    type primary;
+    file "/etc/bind/zones/db.lab.test.signed";
+    allow-transfer { 10.10.10.31; };   // Secondary
+    also-notify    { 10.10.10.31; };
+    notify yes;
+};
+
+// Sur le SECONDARY (10.10.10.31) rien ne change : il reçoit par AXFR/IXFR la zone
+// déjà signée (DNSKEY, RRSIG, NSEC inclus). Vérifier simplement :
+//   dig @10.10.10.31 lab.test DNSKEY +dnssec

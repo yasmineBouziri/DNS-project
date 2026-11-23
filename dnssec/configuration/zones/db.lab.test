@@ -1,0 +1,20 @@
+; Zone de TEST lab.test pour préparer DNSSEC (Tâche 4).
+; La zone définitive est fournie par Ilef (dns/bind9/) : remplacer ce fichier
+; par la sienne avant la signature finale. Plan d'adressage : 10.10.10.0/24.
+$TTL 3600
+@       IN SOA  ns1.lab.test. admin.lab.test. (
+                2026112301 ; serial (AAAAMMJJNN)
+                3600       ; refresh
+                900        ; retry
+                604800     ; expire
+                300 )      ; negative TTL
+        IN NS   ns1.lab.test.
+        IN NS   ns2.lab.test.
+
+ns1         IN A    10.10.10.30
+ns2         IN A    10.10.10.31
+resolver    IN A    10.10.10.20
+client      IN A    10.10.10.10
+server      IN A    10.10.10.30
+www         IN A    10.10.10.30
+supervision IN A    10.10.10.50
