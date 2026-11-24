@@ -49,3 +49,25 @@ documentation/    rapport
 ## Indicateurs d'évaluation
 
 Temps de résolution, disponibilité, taux d'échec, surcharge CPU, taille des échanges, comportement en cas de panne.
+
+
+
+
+## Setting up the environment 
+
+Hi everyone! To install our DNS laboratory environment, please install:
+
+1. Oracle VirtualBox
+2. Vagrant
+3. Git (if you're using Windows)
+
+After installing them, clone our DNS-project repository and run "vagrant up" inside the project directory.
+
+Vagrant will automatically create and configure the three Ubuntu machines: router, client and primary.
+
+You do NOT need to install Ubuntu manually!
+
+((to check if the three machines are working "vagrant status" and it should print 
+router __running
+client__running 
+primary __running ))
