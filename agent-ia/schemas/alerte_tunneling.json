@@ -1,0 +1,17 @@
+{
+  "alert_id": "ALR-20261124-0002",
+  "timestamp": "2026-11-24T15:42:40Z",
+  "anomaly_type": "tunneling",
+  "severity": "critical",
+  "score": 0.97,
+  "source_ip": "10.10.10.40",
+  "target": "resolver (10.10.10.20)",
+  "transport": "classic",
+  "features": {
+    "qps": 45,
+    "avg_query_len": 98,
+    "nxdomain_rate": 0.02,
+    "txt_ratio": 0.81,
+    "unique_domains": 2300
+  }
+}

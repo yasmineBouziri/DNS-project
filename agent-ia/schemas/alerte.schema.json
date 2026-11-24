@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Alerte DNS",
+  "type": "object",
+  "required": ["alert_id", "timestamp", "anomaly_type", "severity", "score", "source_ip", "target"],
+  "properties": {
+    "alert_id":     { "type": "string", "description": "Identifiant unique, ex: ALR-20261124-0001" },
+    "timestamp":    { "type": "string", "format": "date-time", "description": "ISO 8601 UTC" },
+    "anomaly_type": { "type": "string", "enum": ["flood", "tunneling", "nxdomain_burst", "amplification", "unknown"] },
+    "severity":     { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "score":        { "type": "number", "minimum": 0, "maximum": 1, "description": "Score d'anomalie du modèle ML" },
+    "source_ip":    { "type": "string", "description": "IP suspecte, ex: 10.10.10.40" },
+    "target":       { "type": "string", "description": "Machine visée, ex: resolver (10.10.10.20)" },
+    "transport":    { "type": "string", "enum": ["classic", "dot", "doh"] },
+    "features": {
+      "type": "object",
+      "properties": {
+        "qps":             { "type": "number" },
+        "avg_query_len":   { "type": "number" },
+        "nxdomain_rate":   { "type": "number" },
+        "txt_ratio":       { "type": "number" },
+        "unique_domains":  { "type": "integer" }
+      }
+    }
+  }
+}
