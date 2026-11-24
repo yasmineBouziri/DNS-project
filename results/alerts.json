@@ -1,0 +1,1612 @@
+[
+    {
+        "alert_id": "ALR-20260101-0001",
+        "timestamp": "2026-01-01T01:52:30Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.6602,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 48.221181270620946,
+            "nxdomain_rate": 3.550758519348684
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0002",
+        "timestamp": "2026-01-01T01:44:10Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.7056,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 80.32204602281948,
+            "nxdomain_rate": 6.918164394628769
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0003",
+        "timestamp": "2026-01-01T00:54:40Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.5919,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 72.3488812080455,
+            "nxdomain_rate": 5.531223228592581
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0004",
+        "timestamp": "2026-01-01T00:52:20Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.6062,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 91.57935592711438,
+            "nxdomain_rate": 4.084774278846676
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0005",
+        "timestamp": "2026-01-01T02:09:00Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.6068,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 82.13248709758483,
+            "nxdomain_rate": 5.209202492486641
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0006",
+        "timestamp": "2026-01-01T00:54:20Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.6027,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 68.20302522524682,
+            "nxdomain_rate": 4.5987450606801765
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0007",
+        "timestamp": "2026-01-01T00:10:50Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.5915,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 99.17404669518075,
+            "nxdomain_rate": 6.611116148499621
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0008",
+        "timestamp": "2026-01-01T01:26:20Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.575,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 80.10273593625351,
+            "nxdomain_rate": 6.304330132660478
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0009",
+        "timestamp": "2026-01-01T01:17:20Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.5829,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 78.6894202648251,
+            "nxdomain_rate": 6.204507551606156
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0010",
+        "timestamp": "2026-01-01T02:29:30Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.5956,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 71.65757309994657,
+            "nxdomain_rate": 6.4135243518009775
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0011",
+        "timestamp": "2026-01-01T00:09:10Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.581,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 88.98125240446544,
+            "nxdomain_rate": 3.504939169772795
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0012",
+        "timestamp": "2026-01-01T01:56:10Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.6464,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 96.05584075145686,
+            "nxdomain_rate": 6.6453326681979625
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0013",
+        "timestamp": "2026-01-01T01:11:30Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.5738,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 81.4270237369797,
+            "nxdomain_rate": 3.9074457296165876
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0014",
+        "timestamp": "2026-01-01T01:12:00Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.5784,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 72.64106199529834,
+            "nxdomain_rate": 2.660251884292603
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0015",
+        "timestamp": "2026-01-01T02:30:00Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7839,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 900.3873545340335,
+            "nxdomain_rate": 47.64645923208279
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0016",
+        "timestamp": "2026-01-01T02:30:10Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.8189,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 855.814053924068,
+            "nxdomain_rate": 43.56750505750012
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0017",
+        "timestamp": "2026-01-01T02:30:20Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7975,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 660.6719852047817,
+            "nxdomain_rate": 64.34086351103987
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0018",
+        "timestamp": "2026-01-01T02:30:30Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.793,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 986.874165115281,
+            "nxdomain_rate": 42.984483649394434
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0019",
+        "timestamp": "2026-01-01T02:30:40Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7996,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 682.2895443361634,
+            "nxdomain_rate": 48.373034489765104
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0020",
+        "timestamp": "2026-01-01T02:30:50Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.8023,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 718.6269435765063,
+            "nxdomain_rate": 39.33290696951567
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0021",
+        "timestamp": "2026-01-01T02:31:00Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7994,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 663.036036452282,
+            "nxdomain_rate": 56.893112488708056
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0022",
+        "timestamp": "2026-01-01T02:31:10Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.8023,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 837.5397402365263,
+            "nxdomain_rate": 62.43008163712861
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0023",
+        "timestamp": "2026-01-01T02:31:20Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7851,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 832.5143382820714,
+            "nxdomain_rate": 48.707240737484135
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0024",
+        "timestamp": "2026-01-01T02:31:30Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7899,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 736.3216408449038,
+            "nxdomain_rate": 72.50129779250153
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0025",
+        "timestamp": "2026-01-01T02:31:40Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7869,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 835.8044016910965,
+            "nxdomain_rate": 42.914225631429666
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0026",
+        "timestamp": "2026-01-01T02:31:50Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.8059,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 775.4462843426427,
+            "nxdomain_rate": 55.899145963487776
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0027",
+        "timestamp": "2026-01-01T02:32:00Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.8237,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 680.0727341368905,
+            "nxdomain_rate": 68.07819277583201
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0028",
+        "timestamp": "2026-01-01T02:32:10Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7901,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 754.0652789629783,
+            "nxdomain_rate": 41.38095735583918
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0029",
+        "timestamp": "2026-01-01T02:32:20Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7904,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 875.1467569224347,
+            "nxdomain_rate": 46.52171165989877
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0030",
+        "timestamp": "2026-01-01T02:32:30Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7943,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 736.8280241657692,
+            "nxdomain_rate": 40.447505501668275
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0031",
+        "timestamp": "2026-01-01T02:32:40Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7973,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 644.3563527819686,
+            "nxdomain_rate": 45.28280192188993
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0032",
+        "timestamp": "2026-01-01T02:32:50Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.8132,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 1038.3435198118727,
+            "nxdomain_rate": 63.40765579204417
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0033",
+        "timestamp": "2026-01-01T02:33:00Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.8527,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 629.2123786789801,
+            "nxdomain_rate": 62.772357331848625
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0034",
+        "timestamp": "2026-01-01T02:33:10Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7972,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 660.1460840898033,
+            "nxdomain_rate": 56.37541920233096
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0035",
+        "timestamp": "2026-01-01T02:33:20Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.8043,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 859.0970143931204,
+            "nxdomain_rate": 61.40617675132273
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0036",
+        "timestamp": "2026-01-01T02:33:30Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.785,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 593.0130028480038,
+            "nxdomain_rate": 64.1705311665893
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0037",
+        "timestamp": "2026-01-01T02:33:40Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7922,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 689.8964256058097,
+            "nxdomain_rate": 36.971509855428856
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0038",
+        "timestamp": "2026-01-01T02:33:50Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7777,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 885.7420454401872,
+            "nxdomain_rate": 35.57856458407891
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0039",
+        "timestamp": "2026-01-01T02:34:00Z",
+        "anomaly_type": "flood",
+        "severity": "critical",
+        "score": 0.7939,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 825.1647297979533,
+            "nxdomain_rate": 39.786942707500444
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0040",
+        "timestamp": "2026-01-01T02:34:10Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6311,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 90.32399387284666,
+            "nxdomain_rate": 5.329995353998959
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0041",
+        "timestamp": "2026-01-01T02:34:20Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6968,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 102.58459044673775,
+            "nxdomain_rate": 3.8317356306819486
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0042",
+        "timestamp": "2026-01-01T02:34:30Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6727,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 78.53667929710883,
+            "nxdomain_rate": 5.029724661829022
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0043",
+        "timestamp": "2026-01-01T02:34:40Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6752,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 85.06913244179611,
+            "nxdomain_rate": 7.054000288471842
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0044",
+        "timestamp": "2026-01-01T02:34:50Z",
+        "anomaly_type": "unknown",
+        "severity": "low",
+        "score": 0.6399,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 90.60165827036464,
+            "nxdomain_rate": 3.551832478697343
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0045",
+        "timestamp": "2026-01-01T02:35:00Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.7396,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 107.22281215073144,
+            "nxdomain_rate": 3.0970984379066877
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0046",
+        "timestamp": "2026-01-01T02:35:10Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.7478,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 100.4293647867563,
+            "nxdomain_rate": 7.475418139597942
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0047",
+        "timestamp": "2026-01-01T02:35:20Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.7056,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 96.97992689773704,
+            "nxdomain_rate": 5.303918022224637
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0048",
+        "timestamp": "2026-01-01T02:35:30Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.7145,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 114.31285733438055,
+            "nxdomain_rate": 5.246180282325435
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0049",
+        "timestamp": "2026-01-01T02:35:40Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6712,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 96.68811332655507,
+            "nxdomain_rate": 5.212366527987945
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0050",
+        "timestamp": "2026-01-01T02:35:50Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.7846,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 106.4959399785467,
+            "nxdomain_rate": 5.41902060385798
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0051",
+        "timestamp": "2026-01-01T02:36:00Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6127,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 74.17490407589396,
+            "nxdomain_rate": 4.284859071517119
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0052",
+        "timestamp": "2026-01-01T02:36:10Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6317,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 104.94311349518671,
+            "nxdomain_rate": 4.715648183395442
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0053",
+        "timestamp": "2026-01-01T02:36:20Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6795,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 85.35826978391833,
+            "nxdomain_rate": 4.4966499711528485
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0054",
+        "timestamp": "2026-01-01T02:36:30Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.675,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 94.40458445594605,
+            "nxdomain_rate": 5.8162290816739555
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0055",
+        "timestamp": "2026-01-01T02:36:40Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6949,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 125.9560417368564,
+            "nxdomain_rate": 5.225328671489203
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0056",
+        "timestamp": "2026-01-01T02:36:50Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.5828,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 70.25471764256223,
+            "nxdomain_rate": 5.556177755731012
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0057",
+        "timestamp": "2026-01-01T02:37:00Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6941,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 100.63739679131608,
+            "nxdomain_rate": 5.684498402868645
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0058",
+        "timestamp": "2026-01-01T02:37:10Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6118,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 80.83795877531304,
+            "nxdomain_rate": 5.7506999816780775
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0059",
+        "timestamp": "2026-01-01T02:37:20Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6625,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 82.71939699761496,
+            "nxdomain_rate": 5.695855756026778
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0060",
+        "timestamp": "2026-01-01T02:37:30Z",
+        "anomaly_type": "tunneling",
+        "severity": "low",
+        "score": 0.6909,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 114.50197566963887,
+            "nxdomain_rate": 4.551879192344456
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0061",
+        "timestamp": "2026-01-01T02:37:40Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6012,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 80.08843224926805,
+            "nxdomain_rate": 4.783982044690663
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0062",
+        "timestamp": "2026-01-01T02:37:50Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6493,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 72.89739670162001,
+            "nxdomain_rate": 6.4036069779001
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0063",
+        "timestamp": "2026-01-01T02:38:00Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6057,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 92.58500815890983,
+            "nxdomain_rate": 5.666334395741234
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0064",
+        "timestamp": "2026-01-01T02:38:10Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.693,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 74.65598375446318,
+            "nxdomain_rate": 3.473404266635283
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0065",
+        "timestamp": "2026-01-01T02:38:20Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6332,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 62.490839791804156,
+            "nxdomain_rate": 5.863798014412438
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0066",
+        "timestamp": "2026-01-01T02:38:30Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.5858,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 90.47556886962717,
+            "nxdomain_rate": 5.434787626214659
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0067",
+        "timestamp": "2026-01-01T02:38:40Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.5959,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 63.87753214410287,
+            "nxdomain_rate": 5.300085775838567
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0068",
+        "timestamp": "2026-01-01T02:38:50Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6837,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 95.74671498324798,
+            "nxdomain_rate": 3.4338851862920023
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0069",
+        "timestamp": "2026-01-01T02:39:00Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6405,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 84.38412665390969,
+            "nxdomain_rate": 4.80936253040804
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0070",
+        "timestamp": "2026-01-01T02:39:10Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6445,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 74.98528295128358,
+            "nxdomain_rate": 6.758884081511754
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0071",
+        "timestamp": "2026-01-01T02:39:20Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6613,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 77.34013465243001,
+            "nxdomain_rate": 5.204167867452523
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0072",
+        "timestamp": "2026-01-01T02:39:30Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6853,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 68.89163788013747,
+            "nxdomain_rate": 3.495394771336067
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0073",
+        "timestamp": "2026-01-01T02:39:40Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6395,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 78.52857161156257,
+            "nxdomain_rate": 6.233790407813569
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0074",
+        "timestamp": "2026-01-01T02:39:50Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6815,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 75.86087124986693,
+            "nxdomain_rate": 4.618198835622822
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0075",
+        "timestamp": "2026-01-01T02:40:00Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6505,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 93.88462302016563,
+            "nxdomain_rate": 4.8787851952763805
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0076",
+        "timestamp": "2026-01-01T02:40:10Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6473,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 81.7255689878989,
+            "nxdomain_rate": 6.794563028382055
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0077",
+        "timestamp": "2026-01-01T02:40:20Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6648,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 86.82842897401903,
+            "nxdomain_rate": 6.299978352877571
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0078",
+        "timestamp": "2026-01-01T02:40:30Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6757,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 81.81968812077598,
+            "nxdomain_rate": 3.126052192856741
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0079",
+        "timestamp": "2026-01-01T02:40:40Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6148,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 85.16276640198168,
+            "nxdomain_rate": 5.613095690775083
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0080",
+        "timestamp": "2026-01-01T02:40:50Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6761,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 73.37353108745235,
+            "nxdomain_rate": 4.671227115328305
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0081",
+        "timestamp": "2026-01-01T02:41:00Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.682,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 79.30667242546647,
+            "nxdomain_rate": 6.751979104662965
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0082",
+        "timestamp": "2026-01-01T02:41:10Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6121,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 88.28114270526964,
+            "nxdomain_rate": 6.037989290020776
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0083",
+        "timestamp": "2026-01-01T02:41:20Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6273,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 89.64049250228376,
+            "nxdomain_rate": 3.8703786042596686
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0084",
+        "timestamp": "2026-01-01T02:41:40Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.5891,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 70.43100078267051,
+            "nxdomain_rate": 4.551643539927378
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0085",
+        "timestamp": "2026-01-01T02:41:50Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6201,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 80.97166751126963,
+            "nxdomain_rate": 3.8540624316599037
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0086",
+        "timestamp": "2026-01-01T02:42:20Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6635,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 103.11032692615801,
+            "nxdomain_rate": 6.763360817730044
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0087",
+        "timestamp": "2026-01-01T02:42:30Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6307,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 68.92566433585317,
+            "nxdomain_rate": 5.854032061235188
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0088",
+        "timestamp": "2026-01-01T02:42:50Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.5986,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "classic",
+        "features": {
+            "qps": 73.61496154853178,
+            "nxdomain_rate": 3.3315640077714574
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0089",
+        "timestamp": "2026-01-01T02:44:50Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.6706,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 53.49042368710024,
+            "nxdomain_rate": 4.702839582702679
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0090",
+        "timestamp": "2026-01-01T02:45:00Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.5868,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 61.93260865122644,
+            "nxdomain_rate": 4.713962537762886
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0091",
+        "timestamp": "2026-01-01T02:45:10Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.5925,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 64.44695042925233,
+            "nxdomain_rate": 7.093486653770805
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0092",
+        "timestamp": "2026-01-01T02:46:00Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.5887,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 70.35047835147287,
+            "nxdomain_rate": 3.4620075564304207
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0093",
+        "timestamp": "2026-01-01T02:46:10Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.6717,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 73.23803209103312,
+            "nxdomain_rate": 6.103664870754764
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0094",
+        "timestamp": "2026-01-01T02:46:20Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.7122,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 59.00096944952948,
+            "nxdomain_rate": 3.965234059449414
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0095",
+        "timestamp": "2026-01-01T02:46:30Z",
+        "anomaly_type": "unknown",
+        "severity": "critical",
+        "score": 0.6949,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 78.14574540848743,
+            "nxdomain_rate": 5.574667840481342
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0096",
+        "timestamp": "2026-01-01T02:46:40Z",
+        "anomaly_type": "unknown",
+        "severity": "critical",
+        "score": 0.6857,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 73.61680738334248,
+            "nxdomain_rate": 4.197285626278585
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0097",
+        "timestamp": "2026-01-01T02:46:50Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.8185,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 53.429378074974835,
+            "nxdomain_rate": 4.485734168736775
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0098",
+        "timestamp": "2026-01-01T02:47:00Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.7201,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 67.6499759973955,
+            "nxdomain_rate": 3.0640452323873326
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0099",
+        "timestamp": "2026-01-01T02:47:10Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.6717,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 69.054718213408,
+            "nxdomain_rate": 5.007094475325611
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0100",
+        "timestamp": "2026-01-01T02:47:20Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6901,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 71.06905553899276,
+            "nxdomain_rate": 4.494387297387174
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0101",
+        "timestamp": "2026-01-01T02:47:30Z",
+        "anomaly_type": "unknown",
+        "severity": "critical",
+        "score": 0.6991,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 87.02807422514817,
+            "nxdomain_rate": 4.810519869013911
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0102",
+        "timestamp": "2026-01-01T02:47:40Z",
+        "anomaly_type": "unknown",
+        "severity": "critical",
+        "score": 0.6636,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 77.26092417566572,
+            "nxdomain_rate": 5.108698900015069
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0103",
+        "timestamp": "2026-01-01T02:47:50Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.7892,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 99.10898377469461,
+            "nxdomain_rate": 5.131195489343396
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0104",
+        "timestamp": "2026-01-01T02:48:00Z",
+        "anomaly_type": "unknown",
+        "severity": "critical",
+        "score": 0.7736,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 80.88608676134403,
+            "nxdomain_rate": 3.431492161962405
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0105",
+        "timestamp": "2026-01-01T02:48:10Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.6691,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 65.98529577156384,
+            "nxdomain_rate": 5.462352460671059
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0106",
+        "timestamp": "2026-01-01T02:48:20Z",
+        "anomaly_type": "unknown",
+        "severity": "critical",
+        "score": 0.7224,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 74.92125542919067,
+            "nxdomain_rate": 4.029476782335745
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0107",
+        "timestamp": "2026-01-01T02:48:30Z",
+        "anomaly_type": "unknown",
+        "severity": "critical",
+        "score": 0.7438,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 76.93388556249359,
+            "nxdomain_rate": 3.721590059960376
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0108",
+        "timestamp": "2026-01-01T02:48:40Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.69,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 72.41217401294118,
+            "nxdomain_rate": 5.671356974948126
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0109",
+        "timestamp": "2026-01-01T02:48:50Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.7529,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 90.66239784624773,
+            "nxdomain_rate": 3.5938510241843487
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0110",
+        "timestamp": "2026-01-01T02:49:00Z",
+        "anomaly_type": "unknown",
+        "severity": "critical",
+        "score": 0.719,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 72.58706676278047,
+            "nxdomain_rate": 5.777933164110442
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0111",
+        "timestamp": "2026-01-01T02:49:10Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.7097,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 66.37451092514159,
+            "nxdomain_rate": 4.9857193876030665
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0112",
+        "timestamp": "2026-01-01T02:49:20Z",
+        "anomaly_type": "unknown",
+        "severity": "critical",
+        "score": 0.7402,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "dot",
+        "features": {
+            "qps": 65.45376744391358,
+            "nxdomain_rate": 6.825738086877094
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0113",
+        "timestamp": "2026-01-01T02:49:30Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.5924,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 385.2763472213632,
+            "nxdomain_rate": 5.634399591161337
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0114",
+        "timestamp": "2026-01-01T02:49:50Z",
+        "anomaly_type": "unknown",
+        "severity": "medium",
+        "score": 0.6156,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 249.2738006250415,
+            "nxdomain_rate": 4.882923338918565
+        }
+    },
+    {
+        "alert_id": "ALR-20260101-0115",
+        "timestamp": "2026-01-01T02:50:20Z",
+        "anomaly_type": "unknown",
+        "severity": "high",
+        "score": 0.5719,
+        "source_ip": "unknown",
+        "target": "resolver (10.10.10.20)",
+        "transport": "doh",
+        "features": {
+            "qps": 340.1735295987931,
+            "nxdomain_rate": 2.908917156863372
+        }
+    }
+]

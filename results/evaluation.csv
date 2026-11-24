@@ -1,0 +1,9 @@
+scenario,total,actual_anomalies,detected,detection_rate
+authoritative_down,23,23,23,1.0
+dns_flood,25,25,25,1.0
+dns_tunneling,21,21,21,1.0
+dnssec_failure,15,15,5,0.3333333333333333
+high_latency,13,13,4,0.3076923076923077
+normal,270,0,14,
+resource_overload,20,20,20,1.0
+traffic_spike,10,10,3,0.3
