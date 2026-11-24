@@ -2,4 +2,7 @@
 *.srl
 *.csr
 *.pcap
+agent-ia/alertes/
+agent-ia/journal/
+__pycache__/
 
