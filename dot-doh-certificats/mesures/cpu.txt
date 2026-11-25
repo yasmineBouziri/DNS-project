@@ -1,0 +1,4 @@
+mode,ticks_cpu_pour_
+classique,5
+DoT,59
+DoH,55
