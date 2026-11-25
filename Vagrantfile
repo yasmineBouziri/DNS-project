@@ -64,7 +64,7 @@ Vagrant.configure("2") do |config|
       SHELL
   end
 
-#-----DNS-----
+#-----Primary DNS-----
   config.vm.define "primary" do |machine|
     machine.vm.hostname = "primary"
 
@@ -89,4 +89,102 @@ Vagrant.configure("2") do |config|
       SHELL
   end
 
+#-----Secondary DNS-----
+  config.vm.define "secondary" do |machine|
+    machine.vm.hostname = "secondary"
+
+    machine.vm.network "private_network",
+      ip: "10.10.20.31",
+      netmask: "255.255.255.0",
+      virtualbox__intnet: "zone-dns"
+
+    machine.vm.provider "virtualbox" do |vb|
+      vb.name = "dnslab-secondary"
+      vb.memory = 512
+      vb.cpus = 1
+    end
+
+    machine.vm.provision "routes",
+      type: "shell",
+      run: "always",
+      inline: <<-SHELL
+        ip route replace 10.10.10.0/24 via 10.10.20.1
+        ip route replace 10.10.30.0/24 via 10.10.20.1
+        echo "Secondary routes configured"
+      SHELL
+  end
+
+ #-----resolver-----
+  config.vm.define "resolver" do |machine|
+    machine.vm.hostname = "resolver"
+
+    machine.vm.network "private_network",
+      ip: "10.10.10.20",
+      netmask: "255.255.255.0",
+      virtualbox__intnet: "zone-clients"
+
+    machine.vm.provider "virtualbox" do |vb|
+      vb.name = "dnslab-resolver"
+      vb.memory = 1024
+      vb.cpus = 1
+    end
+
+    machine.vm.provision "routes",
+      type: "shell",
+      run: "always",
+      inline: <<-SHELL
+        ip route replace 10.10.20.0/24 via 10.10.10.1
+        ip route replace 10.10.30.0/24 via 10.10.10.1
+        echo "Resolver routes configured"
+      SHELL
+  end
+
+#-----supervision-----
+  config.vm.define "supervision" do |machine|
+    machine.vm.hostname = "supervision"
+
+    machine.vm.network "private_network",
+      ip: "10.10.30.50",
+      netmask: "255.255.255.0",
+      virtualbox__intnet: "zone-supervision"
+
+    machine.vm.provider "virtualbox" do |vb|
+      vb.name = "dnslab-supervision"
+      vb.memory = 1536
+      vb.cpus = 1
+    end
+
+    machine.vm.provision "routes",
+      type: "shell",
+      run: "always",
+      inline: <<-SHELL
+        ip route replace 10.10.10.0/24 via 10.10.30.1
+        ip route replace 10.10.20.0/24 via 10.10.30.1
+        echo "Supervision routes configured"
+      SHELL
+  end
+#-----attacker-----
+  config.vm.define "attacker", autostart: false do |machine|
+    machine.vm.hostname = "attacker"
+
+    machine.vm.network "private_network",
+      ip: "10.10.10.40",
+      netmask: "255.255.255.0",
+      virtualbox__intnet: "zone-clients"
+
+    machine.vm.provider "virtualbox" do |vb|
+      vb.name = "dnslab-attacker"
+      vb.memory = 512
+      vb.cpus = 1
+    end
+
+    machine.vm.provision "routes",
+      type: "shell",
+      run: "always",
+      inline: <<-SHELL
+        ip route replace 10.10.20.0/24 via 10.10.10.1
+        ip route replace 10.10.30.0/24 via 10.10.10.1
+        echo "Attacker routes configured"
+      SHELL
+  end 
 end
