@@ -137,6 +137,9 @@ Vagrant.configure("2") do |config|
         ip route replace 10.10.30.0/24 via 10.10.10.1
         echo "Resolver routes configured"
       SHELL
+      
+    machine.vm.provision "shell",
+      path: "dns/unbound/install-unbound.sh"
   end
 
 #-----supervision-----
