@@ -87,6 +87,14 @@ Vagrant.configure("2") do |config|
         ip route replace 10.10.30.0/24 via 10.10.20.1
         echo "Primary routes configured"
       SHELL
+    
+    # automatically install and configure BIND9 Primary
+    machine.vm.provision "bind9-primary",
+    type: "shell",
+    run: "once",
+    inline: <<-SHELL
+    bash /vagrant/dns/bind9/setup-bind9.sh primary
+     SHELL
   end
 
 #-----Secondary DNS-----
@@ -112,8 +120,15 @@ Vagrant.configure("2") do |config|
         ip route replace 10.10.30.0/24 via 10.10.20.1
         echo "Secondary routes configured"
       SHELL
+  
+  # automatically install and configure BIND9 Secondary
+    machine.vm.provision "bind9-secondary",
+        type: "shell",
+        run: "once",
+        inline: <<-SHELL
+        bash /vagrant/dns/bind9/setup-bind9.sh secondary
+    SHELL
   end
-
  #-----resolver-----
   config.vm.define "resolver" do |machine|
     machine.vm.hostname = "resolver"

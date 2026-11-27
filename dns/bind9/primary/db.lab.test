@@ -1,0 +1,19 @@
+$TTL 604800
+@   IN  SOA ns1.lab.test. admin.lab.test. (
+        3         ; Serial
+        604800    ; Refresh
+        86400     ; Retry
+        2419200   ; Expire
+        604800 )  ; Negative Cache TTL
+
+@       IN  NS      ns1.lab.test.
+@       IN  NS      ns2.lab.test.
+@       IN  MX  10  mail.lab.test.
+
+ns1     IN  A       10.10.20.30
+ns2     IN  A       10.10.20.31
+www     IN  A       10.10.20.30
+mail    IN  A       10.10.20.30
+ns1     IN  AAAA    fd10:10:20::30
+www     IN  AAAA    fd10:10:20::30
+web     IN  CNAME   www.lab.test.

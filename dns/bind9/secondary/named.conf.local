@@ -1,0 +1,6 @@
+
+zone "lab.test" {
+    type secondary;
+    file "/var/cache/bind/db.lab.test";
+    primaries { 10.10.20.30; };
+};
