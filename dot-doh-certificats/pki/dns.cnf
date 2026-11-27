@@ -1,0 +1,20 @@
+[req]
+distinguished_name = dn
+req_extensions = v3_req
+prompt = no
+
+[dn]
+C = TN
+O = Lab DNS
+CN = resolver.lab.test
+
+[v3_req]
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt
+
+[alt]
+DNS.1 = resolver.lab.test
+IP.1 = 10.10.10.20
+IP.2 = 127.0.0.1
