@@ -60,6 +60,11 @@ Vagrant.configure("2") do |config|
       inline: <<-SHELL
         ip route replace 10.10.20.0/24 via 10.10.10.1
         ip route replace 10.10.30.0/24 via 10.10.10.1
+        resolvectl dns eth1 10.10.10.20
+        resolvectl domain eth1 '~.'
+        resolvectl default-route eth1 yes
+        resolvectl default-route eth0 no
+        resolvectl flush-caches
         echo "Client routes configured"
       SHELL
   end
