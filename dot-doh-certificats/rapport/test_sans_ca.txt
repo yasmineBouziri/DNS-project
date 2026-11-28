@@ -1,0 +1,7 @@
+=== kdig avec une CA inconnue (échec attendu) ===
+;; WARNING: TLS, handshake failed (Error in the certificate.)
+;; ERROR: failed to query server 127.0.0.1@853(TCP)
+
+=== openssl sans aucune CA (échec attendu) ===
+Verify return code: 0 (ok)
+    Verify return code: 0 (ok)

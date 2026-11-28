@@ -6,7 +6,7 @@ prompt = no
 [dn]
 C = TN
 O = Lab DNS
-CN = dns.lab.local
+CN = resolver.lab.test
 
 [v3_req]
 basicConstraints = CA:FALSE
@@ -15,7 +15,6 @@ extendedKeyUsage = serverAuth
 subjectAltName = @alt
 
 [alt]
-DNS.1 = dns.lab.local
-IP.1 = 192.168.56.10
+DNS.1 = resolver.lab.test
+IP.1 = 10.10.10.20
 IP.2 = 127.0.0.1
-

@@ -1,5 +1,8 @@
+
+.vagrant/
+
 *.key
+*.private
 *.srl
 *.csr
 *.pcap
-
