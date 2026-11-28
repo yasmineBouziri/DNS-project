@@ -1,0 +1,24 @@
+{
+  "isolation_forest": {
+    "features": "relative_add",
+    "params": {
+      "n_estimators": 300,
+      "max_samples": 1.0,
+      "max_features": 0.5
+    }
+  },
+  "one_class_svm": {
+    "features": "relative_add",
+    "params": {
+      "nu": 0.01,
+      "gamma": 0.3
+    }
+  },
+  "lof": {
+    "features": "relative_add",
+    "params": {
+      "n_neighbors": 35,
+      "metric": "manhattan"
+    }
+  }
+}

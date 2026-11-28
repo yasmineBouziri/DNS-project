@@ -1,0 +1,8 @@
+scenario,lof,one_class_svm,isolation_forest,range_rule
+authoritative_down,1.0,1.0,1.0,1.0
+dns_flood,1.0,1.0,1.0,1.0
+dns_tunneling,0.9895833333333334,0.9895833333333334,0.8020833333333334,1.0
+dnssec_failure,1.0,1.0,0.625,1.0
+high_latency,0.9479166666666666,0.96875,0.75,0.9583333333333334
+resource_overload,1.0,1.0,1.0,1.0
+traffic_spike,0.9895833333333334,0.96875,0.7916666666666666,0.9270833333333334

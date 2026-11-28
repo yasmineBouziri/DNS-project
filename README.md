@@ -1,6 +1,7 @@
 # DNS Anomaly Detection — Task 7
 
-**Project:** Secure and Resilient DNS: From Classical DNS to DNSSEC and DoT/DoH in a Laboratory Environment  
+**Project:** Secure and Resilient DNS: From Classical DNS to DNSSEC and DoT/DoH in a Laboratory Environment
+
 **Module:** Task 7 — Machine Learning-Based DNS Anomaly Detection
 
 ---
@@ -9,21 +10,23 @@
 
 Task 7 is responsible for detecting abnormal DNS traffic and identifying potentially malicious or abnormal behavior within the DNS infrastructure.
 
-It analyzes DNS monitoring metrics, learns normal traffic behavior, detects deviations, and produces structured alerts for further investigation.
+It receives DNS monitoring metrics, analyzes traffic patterns, detects anomalies, classifies their potential causes, and generates structured alerts for further investigation by Task 8.
 
-The objective is to develop an independent, modular and replaceable anomaly detection component that can integrate with the project's global monitoring and analysis architecture.
+The objective is to provide an independent and replaceable anomaly detection component that can integrate with the project's global monitoring and analysis architecture.
 
 ### Main objectives
 
 - Analyze DNS traffic and infrastructure metrics.
-- Establish normal DNS behavior under different DNS configurations.
-- Detect unusual patterns using unsupervised machine learning.
+- Establish normal DNS traffic behavior.
+- Detect unusual patterns using machine learning.
 - Identify potential DNS attacks and operational failures.
-- Generate anomaly scores and detection results.
-- Produce structured JSON alerts.
+- Assign anomaly scores and severity levels.
+- Generate structured JSON alerts.
 - Provide a standardized interface for integration with other modules.
 
 ### Supported anomaly scenarios
+
+The prototype currently simulates the following scenarios:
 
 | Scenario | Description |
 |---|---|
@@ -43,28 +46,26 @@ The detection module follows a modular processing pipeline:
 
 ```mermaid
 flowchart TD
-    A["DNS Monitoring Metrics"] --> B["Data Validation"]
-    B --> C["Feature Engineering"]
-    C --> D["Preprocessing and Scaling"]
-    D --> E["Anomaly Detection"]
-    E --> F["Detection Results"]
-    F --> G["Classification and Severity Assessment"]
-    G --> H["JSON Alert Generation"]
-    H --> I["Downstream Analysis and Monitoring"]
+    A["DNS Monitoring Metrics (Task 6)"] --> B["Data Validation & Preprocessing"]
+    B --> C["Feature Extraction"]
+    C --> D["Anomaly Detection"]
+    D --> E["Anomaly Classification"]
+    E --> F["Severity Assessment"]
+    F --> G["JSON Alert Generation"]
+    G --> H["Task 8: AI Agent & Network Analysis"]
 ```
 
 ### Processing stages
 
-1. **Data Input:** Receives DNS monitoring metrics or simulated datasets.
-2. **Validation:** Checks input structure, feature types and data validity.
-3. **Feature Engineering:** Extracts and derives features that describe DNS behavior.
-4. **Preprocessing:** Handles missing values, encodes categorical variables and scales numerical features where required.
-5. **Anomaly Detection:** Identifies observations that deviate from learned normal behavior.
-6. **Classification:** Associates detected anomalies with potential scenarios using available metrics and detection logic.
-7. **Severity Assessment:** Assigns a severity level according to anomaly characteristics.
-8. **Alert Generation:** Produces structured JSON alerts for downstream components.
+1. **Data Input:** Receives DNS monitoring metrics from Task 6 or simulated datasets.
+2. **Preprocessing:** Validates input data, handles missing values and prepares features.
+3. **Feature Extraction:** Selects numerical and categorical variables used by the detection model.
+4. **Anomaly Detection:** Identifies observations that significantly deviate from normal traffic behavior.
+5. **Classification:** Estimates the type of anomaly based on observed metrics.
+6. **Severity Assessment:** Assigns a severity level according to anomaly characteristics.
+7. **Alert Generation:** Produces structured JSON alerts for Task 8.
 
-The detection engine is designed to remain independent of the downstream analysis component.
+The detection engine is designed to remain independent of the downstream AI agent. Task 8 receives the alerts and performs further analysis and decision support.
 
 ---
 
@@ -72,9 +73,9 @@ The detection engine is designed to remain independent of the downstream analysi
 
 ### 3.1 Synthetic Dataset
 
-Since real monitoring metrics are not yet available for all experiments, synthetic DNS observations are used to develop and evaluate the detection pipeline.
+Since real monitoring metrics from Task 6 are not yet available, an initial synthetic dataset was generated to develop and test the detection pipeline.
 
-The initial dataset contains **1,027 observations**:
+The dataset contains **1,027 observations**:
 
 | Category | Number of observations |
 |---|---:|
@@ -82,15 +83,13 @@ The initial dataset contains **1,027 observations**:
 | Anomalous traffic | 127 |
 | Total | 1,027 |
 
-The observations represent three DNS transport protocols:
+The dataset includes normal observations across three DNS transport protocols:
 
 - Classic DNS
 - DNS over TLS (DoT)
 - DNS over HTTPS (DoH)
 
-They also cover different DNSSEC configurations.
-
-Additional development datasets were generated for later experiments, including milder and moderate anomaly scenarios.
+It also includes different DNSSEC configurations.
 
 ### 3.2 Dataset Features
 
@@ -111,52 +110,48 @@ Additional development datasets were generated for later experiments, including 
 | label | Binary | Ground-truth label: normal (0) or anomaly (1). |
 | scenario | Categorical | Simulated traffic scenario. |
 
+**Note:** The current dataset is synthetic. Its values are illustrative and do not represent measurements from a production DNS infrastructure.
+
 ### 3.3 Data Generation
 
-The initial dataset is generated using:
+The dataset is generated using:
 
 ```bash
 python src/generate_data.py
 ```
 
-Output:
+The generated dataset is saved to:
 
 ```text
 data/simulated_dns_data.csv
 ```
 
-Additional development and evaluation datasets are generated using the corresponding phase-specific data generation scripts.
-
-**Note:** All current experimental datasets are synthetic. Their values are illustrative and do not represent measurements from a production DNS infrastructure.
-
 ---
 
 ## 4. Anomaly Detection Methodology
-
-The detection pipeline has evolved through several experimental phases.
 
 ### 4.1 Initial Algorithm: Isolation Forest
 
 The initial implementation uses **Isolation Forest**, an unsupervised machine learning algorithm designed to identify anomalies without requiring labeled attack examples during training.
 
-The model learns patterns from normal DNS observations and identifies observations that differ significantly from the learned behavior.
+The model learns patterns from normal DNS traffic and identifies observations that differ significantly from the learned behavior.
 
-Isolation Forest was initially selected because:
+Isolation Forest was selected because:
 
 - It does not require attack labels during training.
-- It can detect unusual combinations of metrics.
-- It supports multivariate anomaly detection.
-- It produces anomaly scores that can be used for threshold-based detection.
+- It is suitable for detecting unusual combinations of metrics.
+- It can handle multiple numerical and categorical features through preprocessing.
+- It provides anomaly scores that can be used for threshold-based detection.
 
-### 4.2 Initial Preprocessing
+### 4.2 Data Preprocessing
 
-The initial preprocessing pipeline includes:
+The preprocessing pipeline includes:
 
-- Numerical imputation using `SimpleImputer`.
-- Categorical encoding using `OneHotEncoder`.
+- Numerical feature imputation using `SimpleImputer`.
+- Categorical feature encoding using `OneHotEncoder`.
 - Feature transformation using `ColumnTransformer`.
 
-The original model uses:
+The model uses the following features:
 
 **Categorical features:**
 - transport
@@ -173,225 +168,58 @@ The original model uses:
 - cpu_usage
 - memory_usage
 
-### 4.3 Training and Threshold Calibration
+### 4.3 Model Training
 
-The unsupervised models are fitted using normal observations only.
+The model is trained using normal observations only.
 
-Normal observations are separated into:
+The current training implementation uses a training split of the normal dataset and reserves normal observations for threshold calibration.
 
-- Training data.
-- Calibration data.
-- Held-out normal test data.
+The model configuration includes:
 
-Attack observations are reserved for evaluation rather than model fitting.
+| Parameter | Value |
+|---|---|
+| Algorithm | Isolation Forest |
+| Number of estimators | 150 |
+| Contamination | auto |
+| Random state | 42 |
+| Parallel processing | Enabled |
 
-The anomaly threshold is calibrated using the 95th percentile of anomaly scores from normal calibration observations.
+The anomaly threshold is calibrated using the 95th percentile of anomaly scores from normal calibration observations, targeting an initial false-positive rate of approximately 5%.
 
 An observation is classified as anomalous when its anomaly score reaches or exceeds the calibrated threshold.
 
-**Important:** An anomaly score represents a relative measure of abnormality, not a calibrated probability that an attack is occurring.
+**Important:** The resulting anomaly score is a relative detection score, not a calibrated probability that an attack is occurring.
+
+### 4.4 Further Investigation: Hybrid Detection
+
+Initial experiments revealed that Isolation Forest does not consistently detect all simulated anomaly scenarios.
+
+In particular, certain DNS-specific patterns can be difficult to distinguish using the learned model alone.
+
+The following approach is therefore being investigated:
+
+- Isolation Forest for general anomaly detection.
+- Rule-based detection for known DNS-specific patterns.
+- Combined detection results for improved anomaly coverage.
+
+The proposed hybrid architecture aims to retain the flexibility of machine learning while introducing domain-specific detection capabilities.
+
+This approach is currently under investigation and its final performance has not yet been established.
+
+### 4.5 Model Comparison (Phase 3)
+
+Isolation Forest, One-Class SVM and Local Outlier Factor (`novelty=True`) are compared on the same features and splits. Shared logic is in `src/common.py`.
+
+- Normal rows are split 70% training, 15% calibration, 15% testing, stratified by transport and DNSSEC.
+- Models are fitted on normal rows only; the threshold is the 95th percentile of calibration scores.
+- SVM and LOF use standard-scaled numeric features.
+- Results are averaged over 30 splits.
+
+**Note:** `train_model.py` and `detect.py` still use the original Isolation Forest pipeline (70/30 split). No new model has been adopted yet.
 
 ---
 
-## 5. Phase 3 — Model Comparison and Hyperparameter Selection
-
-Phase 3 expanded the initial Isolation Forest implementation into a comparison of three unsupervised anomaly detection algorithms.
-
-### 5.1 Evaluated Models
-
-| Algorithm | Description |
-|---|---|
-| Isolation Forest | Detects anomalies by isolating observations through randomized decision trees. |
-| One-Class SVM | Learns a boundary around normal observations using a kernel-based approach. |
-| Local Outlier Factor (LOF) | Identifies observations with substantially different local density from their neighbors. |
-
-LOF is configured with `novelty=True` so it can evaluate previously unseen observations.
-
-### 5.2 Experimental Methodology
-
-The experiments use:
-
-- Normal-only training.
-- Separate normal calibration data.
-- A held-out test set containing normal and anomalous observations.
-- A 95th-percentile calibration threshold.
-- Repeated experiments over 30 random splits.
-- Shared preprocessing and feature definitions.
-
-Normal observations are divided into:
-
-| Split | Percentage |
-|---|---:|
-| Training | 70% |
-| Calibration | 15% |
-| Testing | 15% |
-
-The attack observations are reserved for evaluation.
-
-The models are compared using:
-
-- Precision.
-- Recall.
-- F1-score.
-- False-positive rate (FPR).
-- ROC-AUC.
-- PR-AUC.
-- Scenario-level recall.
-
-### 5.3 Selected Hyperparameters
-
-The parameter investigation selected the following configurations:
-
-| Model | Selected configuration |
-|---|---|
-| Isolation Forest | `n_estimators=300`, `max_samples=1.0`, `max_features=0.5`, `bootstrap=False` |
-| One-Class SVM | `kernel=rbf`, `nu=0.1`, `gamma=0.3` |
-| LOF | `n_neighbors=5`, `metric=euclidean` |
-
-These configurations were selected from development experiments under the chosen false-positive-rate constraint.
-
-They are experimental candidates, not universally optimal configurations.
-
-### 5.4 Phase 3 Results
-
-Mean results over 30 development splits using the selected configurations and the 95th-percentile threshold:
-
-| Model | Recall | FPR | PR-AUC | High Latency Recall | Traffic Spike Recall |
-|---|---:|---:|---:|---:|---:|
-| Isolation Forest | 83.3% | 5.5% | 0.994 | 51.1% | 39.5% |
-| One-Class SVM | 97.7% | 4.8% | 0.999 | 88.8% | 94.9% |
-| LOF | 98.0% | 4.8% | 0.999 | 91.8% | 94.6% |
-
-The results indicated that LOF and One-Class SVM substantially outperformed the initial Isolation Forest configuration on the development data.
-
-### 5.5 Parameter Investigation Findings
-
-Additional experiments examined:
-
-- Number of estimators and sampling settings for Isolation Forest.
-- Kernel, `nu` and `gamma` for One-Class SVM.
-- Number of neighbors and distance metrics for LOF.
-- Threshold percentile selection.
-- Numerical feature scaling.
-- Performance across transport and DNSSEC configurations.
-
-Standard scaling improved the performance of both One-Class SVM and LOF.
-
-The experiments also revealed that a simple numerical range-based detector could achieve competitive performance, motivating further investigation into feature engineering and baseline comparisons.
-
----
-
-## 6. Phase 4 — Relative Feature Engineering
-
-Phase 4 focused on improving the representation of DNS behavior by introducing relative query-rate and latency features.
-
-### 6.1 Motivation
-
-Absolute metric values do not necessarily have the same meaning across different DNS configurations.
-
-For example, a query rate or response latency that is normal for one transport configuration may be unusual for another.
-
-The same applies to DNSSEC-enabled and DNSSEC-disabled configurations.
-
-Using one global baseline can therefore make it difficult to distinguish genuine anomalies from normal differences between configurations.
-
-### 6.2 Relative Features
-
-Phase 4 introduced two additional types of information:
-
-- Query rate relative to the normal level for the same transport and DNSSEC configuration.
-- Average latency relative to the normal level for the same transport and DNSSEC configuration.
-
-These features provide the detection algorithms with context about how much an observation deviates from the expected behavior of its corresponding DNS configuration.
-
-The reference normal levels must be calculated using normal training observations only, preventing information from calibration or test observations from influencing feature construction.
-
-### 6.3 Logarithmic Transformation Investigation
-
-Logarithmic transformations were also investigated as an alternative feature transformation.
-
-However, the experiments showed that logarithmic transformations reduced performance across the evaluated models.
-
-Consequently, logarithmic transformations were not retained in the Phase 4 configuration.
-
-### 6.4 Feature Correlation Analysis
-
-Correlation analysis within normal transport/DNSSEC groups showed that the numerical features were generally only weakly correlated.
-
-Therefore, the current approach retains the existing numerical features rather than removing features solely based on correlation.
-
-Feature importance can differ between algorithms:
-
-- `error_rate` and `servfail_rate` had relatively little influence on One-Class SVM and LOF.
-- These features remained more influential for Isolation Forest.
-
-This suggests that feature relevance depends on the detection algorithm and should be evaluated experimentally.
-
-### 6.5 Phase 4 Results
-
-Development results averaged over 30 splits:
-
-| Model | Phase 3 Recall | Phase 4 Recall | High Latency Recall |
-|---|---:|---:|---:|
-| LOF | 98.0% | 99.0% | 98% |
-| One-Class SVM | 97.8% | 99.4% | 99% |
-| Isolation Forest | 83.6% | 90.8% | Improved, but still weaker overall |
-
-For Isolation Forest, relative features were added as additional columns. Although overall recall improved, DNSSEC failure and DNS tunneling detection became worse.
-
-This indicates that feature engineering does not necessarily benefit every algorithm or anomaly scenario equally.
-
-### 6.6 Comparison Against a Simple Range-Based Detector
-
-An important Phase 4 experiment compared the machine learning models against a simple rule-based baseline using the relative features.
-
-The baseline flags observations when numerical features fall outside their corresponding normal training ranges.
-
-| Detector | Recall | False-Positive Rate |
-|---|---:|---:|
-| Simple range-based rule | 98.9% | 2.9% |
-| LOF | Approximately 99.0% | Approximately 5–6% |
-| One-Class SVM | Approximately 99.4% | Approximately 5–6% |
-| Isolation Forest | Approximately 90.8% | Approximately 5–6% |
-
-The exact model false-positive rates depend on the corresponding experimental configuration.
-
-### 6.7 Interpretation
-
-The relative features improved machine learning detection, particularly for high-latency anomalies.
-
-However, the simple range-based detector achieved comparable recall with a lower false-positive rate.
-
-This is a significant finding: the current synthetic dataset does not demonstrate a clear performance advantage for machine learning over a simpler threshold-based approach.
-
-One possible explanation is that the synthetic data generator creates many attacks by multiplying normal values within their corresponding transport/DNSSEC groups.
-
-Relative features may therefore make these generated attacks particularly easy to distinguish.
-
-Further validation on independently generated and more realistic traffic is required before drawing conclusions about real-world detection performance.
-
----
-
-## 7. Current Model Assessment
-
-Based on the Phase 4 development experiments:
-
-| Model | Current assessment |
-|---|---|
-| LOF | Strong candidate with high recall and good mild-anomaly detection. |
-| One-Class SVM | Strong candidate with the highest reported overall recall. |
-| Isolation Forest | Useful comparison baseline, but weaker on several anomaly scenarios. |
-| Range-based detector | Strong simple baseline that currently outperforms ML in false-positive rate. |
-
-No final production model has been selected.
-
-The choice should depend on performance against unseen evaluation data, computational requirements, maintainability and integration constraints.
-
----
-
-## 8. Project Structure
-
-The project currently follows a structure similar to:
+## 5. Project Structure
 
 ```text
 dns-anomaly-detection/
@@ -409,14 +237,19 @@ dns-anomaly-detection/
 │   ├── isolation_forest.joblib
 │   ├── isolation_forest/
 │   ├── one_class_svm/
-│   └── lof/
+│   ├── lof/
+│   └── final/
 │
 ├── results/
 │   ├── detections.csv
 │   ├── alerts.json
 │   ├── evaluation.csv
+│   ├── test_data.csv
 │   ├── graphs/
-│   └── phase3/
+│   ├── phase3/
+│   ├── phase4/
+│   ├── phase5/
+│   └── final/
 │
 ├── src/
 │   ├── generate_data.py
@@ -429,6 +262,9 @@ dns-anomaly-detection/
 │   ├── compare_models.py
 │   ├── investigate_parameters.py
 │   ├── plot_phase3.py
+│   ├── feature_experiments.py
+│   ├── tune_models.py
+│   ├── final_evaluation.py
 │   ├── train_model.py
 │   ├── detect.py
 │   ├── evaluate_model.py
@@ -440,32 +276,31 @@ dns-anomaly-detection/
 └── README.md
 ```
 
-The exact contents of the `data/`, `models/` and `results/` directories depend on the experiments executed.
-
-### Main script descriptions
+### Script descriptions
 
 | Script | Responsibility |
 |---|---|
-| `generate_data.py` | Generates the initial synthetic DNS dataset. |
-| `validate_data.py` | Checks dataset structure and data validity. |
-| `train_model.py` | Trains the original Isolation Forest implementation. |
-| `detect.py` | Runs the original detection pipeline and generates alerts. |
-| `evaluate_model.py` | Evaluates the original detection implementation. |
-| `visualize.py` | Generates detection visualizations. |
-| `inspect_errors.py` | Investigates false positives and missed detections. |
-| `common.py` | Shared features, preprocessing, splits and calibration logic. |
-| `prepare_data.py` | Prepares training, calibration and test datasets. |
-| `train_isolation_forest.py` | Trains and saves the Isolation Forest candidate. |
-| `train_one_class_svm.py` | Trains and saves the One-Class SVM candidate. |
-| `train_lof.py` | Trains and saves the LOF candidate. |
-| `compare_models.py` | Evaluates and compares the candidate models. |
-| `generate_phase3_data.py` | Generates additional development and evaluation data. |
-| `investigate_parameters.py` | Investigates hyperparameters, thresholds, scaling and relative features. |
-| `plot_phase3.py` | Generates experimental plots. |
+| generate_data.py | Generates synthetic DNS observations. |
+| train_model.py | Preprocesses data, trains Isolation Forest and calibrates its threshold. |
+| detect.py | Performs anomaly detection and generates alerts. |
+| evaluate_model.py | Evaluates detection performance using labeled observations. |
+| visualize.py | Generates graphs and visual representations of results. |
+| validate_data.py | Checks dataset structure, feature types and data validity. |
+| inspect_errors.py | Investigates missed detections and false positives. |
+| common.py | Shared features, splits, preprocessing and threshold calibration. |
+| prepare_data.py | Saves the training, calibration and test files. |
+| train_isolation_forest.py, train_one_class_svm.py, train_lof.py | Train and save one candidate model each. |
+| compare_models.py | Compares the three models and writes metrics and graphs. |
+| generate_phase3_data.py | Generates milder development attacks and a reserved final test set. |
+| investigate_parameters.py | Runs the parameter, scaling, threshold and per-mode checks. |
+| plot_phase3.py | Plots the threshold trade-off. |
+| feature_experiments.py | Phase 4 feature experiments and distribution plots. |
+| tune_models.py | Phase 5 hyperparameter search and confirmation. |
+| final_evaluation.py | Phase 6 evaluation on the reserved final test set; saves the chosen model. |
 
 ---
 
-## 9. Installation and Setup
+## 6. Installation and Setup
 
 ### Requirements
 
@@ -474,14 +309,14 @@ The exact contents of the `data/`, `models/` and `results/` directories depend o
 - Git.
 - A Python-compatible development environment.
 
-### 9.1 Clone the repository
+### 6.1 Clone the repository
 
 ```bash
 git clone <repository-url>
 cd dns-anomaly-detection
 ```
 
-### 9.2 Create a virtual environment
+### 6.2 Create a virtual environment
 
 **Windows:**
 
@@ -497,7 +332,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 9.3 Install dependencies
+### 6.3 Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -505,107 +340,94 @@ pip install -r requirements.txt
 
 ---
 
-## 10. Execution Guide
+## 7. Execution Guide
 
-Run commands from the project root directory.
+Execute the following commands from the project root directory.
 
-### 10.1 Initial Isolation Forest Pipeline
-
-Generate the initial dataset:
+### Step 1 — Generate synthetic data
 
 ```bash
 python src/generate_data.py
 ```
 
-Validate the dataset:
+### Step 2 — Validate the dataset
 
 ```bash
 python src/validate_data.py
 ```
 
-Train the original Isolation Forest:
+### Step 3 — Train the model
 
 ```bash
 python src/train_model.py
 ```
 
-Run anomaly detection:
+The trained model and calibration information are saved in:
+
+```text
+models/isolation_forest.joblib
+```
+
+### Step 4 — Perform anomaly detection
 
 ```bash
 python src/detect.py
 ```
 
-Evaluate:
+The detection results are saved in:
+
+```text
+results/detections.csv
+results/alerts.json
+```
+
+### Step 5 — Evaluate performance
 
 ```bash
 python src/evaluate_model.py
 ```
 
-Generate visualizations:
+### Step 6 — Visualize results
 
 ```bash
 python src/visualize.py
 ```
 
-Inspect errors:
+### Step 7 — Inspect detection errors
 
 ```bash
 python src/inspect_errors.py
 ```
 
-### 10.2 Model Comparison Pipeline
-
-Prepare the datasets:
+### Model comparison experiments (Phase 3)
 
 ```bash
 python src/prepare_data.py
-```
-
-Train the candidate models:
-
-```bash
 python src/train_isolation_forest.py
 python src/train_one_class_svm.py
 python src/train_lof.py
-```
-
-Compare their performance:
-
-```bash
 python src/compare_models.py
-```
-
-### 10.3 Phase 3 and Phase 4 Experiments
-
-Generate the additional development data:
-
-```bash
 python src/generate_phase3_data.py
-```
-
-Run the parameter and feature investigation:
-
-```bash
 python src/investigate_parameters.py
-```
-
-Generate the experimental plots:
-
-```bash
 python src/plot_phase3.py
+python src/feature_experiments.py
+python src/tune_models.py
+python src/final_evaluation.py
 ```
-
-**Note:** Some scripts may reuse previously generated datasets and saved models. Run the preparation and training steps required by the actual implementation before executing an evaluation or investigation script.
 
 ---
 
-## 11. Experimental Results and Evaluation Limitations
+## 8. Experimental Results
 
-### 11.1 Initial Isolation Forest Evaluation
+### 8.1 Initial Evaluation
 
-The initial implementation was evaluated using the original synthetic dataset.
+The initial implementation was evaluated using the generated synthetic dataset.
 
-Historical results:
+An initial experiment trained the model on normal observations and evaluated it on the same observations. This revealed a high false-positive rate and motivated a more appropriate threshold calibration strategy.
+
+A subsequent experiment used held-out normal observations for threshold calibration and evaluated the model on a dataset containing normal and anomalous observations.
+
+**Preliminary evaluation results:**
 
 | Metric | Normal class | Anomaly class |
 |---|---:|---:|
@@ -622,9 +444,7 @@ Confusion matrix:
 | Actual Normal | 256 | 14 |
 | Actual Anomaly | 26 | 101 |
 
-These figures belong to the initial implementation and should not be compared directly with the later 30-split experiments, which use a different evaluation methodology.
-
-### 11.2 Scenario-Level Initial Evaluation
+### 8.2 Scenario-Level Detection
 
 | Scenario | Detected | Total | Recall |
 |---|---:|---:|---:|
@@ -636,30 +456,106 @@ These figures belong to the initial implementation and should not be compared di
 | Resource Overload | 20 | 20 | 100% |
 | Traffic Spike | 3 | 10 | 30.0% |
 
-### 11.3 Evaluation Limitations
+### 8.3 Error Analysis
 
-The current results are development experiments, not production performance guarantees.
+The analysis of missed detections revealed three particularly interesting patterns:
 
-Important limitations include:
+**DNSSEC failures**
+- Significantly increased SERVFAIL rates.
+- Increased error rates.
+- Relatively normal query rates and resource utilization.
 
-- The data is synthetic.
-- Attack examples are generated using predefined patterns.
-- The same underlying development dataset is reused across repeated splits.
-- The attack examples have influenced parameter selection.
-- The 30 repeated splits are not 30 independent datasets.
-- The relative features may exploit characteristics introduced by the data generator.
-- The simple range-based detector remains a strong baseline.
-- The final independent evaluation dataset has not yet been used to establish generalization performance.
+**High-latency events**
+- Very high response latency over DoH.
+- Relatively normal error and SERVFAIL rates.
+- No significant increase in CPU or memory usage.
 
-A separate final evaluation must be conducted without using its observations to tune parameters, thresholds or feature transformations.
+**Traffic spikes**
+- Query rates significantly above normal DoH baselines.
+- Other infrastructure metrics remained relatively normal.
+
+These findings motivated the investigation of a hybrid detection strategy.
+
+### 8.4 Evaluation Limitations
+
+The reported results are preliminary.
+
+The normal observations used to evaluate the calibrated threshold were also used during threshold calibration. Therefore, the measured false-positive rate is not an independent estimate of generalization performance.
+
+Further evaluation will use separate training, calibration and final testing datasets.
+
+The synthetic dataset is also relatively small and does not reproduce every characteristic of real DNS traffic.
+
+The results should therefore not be interpreted as production-level detection performance.
+
+### 8.5 Phase 3: Parameter Investigation
+
+Development results on 780 synthetic mild and moderate attacks, mean of 30 splits, 95th percentile threshold. Recall is the average over the seven scenarios.
+
+| Model | Selected settings | Recall | False-positive rate | High latency | Traffic spike |
+|---|---|---:|---:|---:|---:|
+| Isolation Forest | n_estimators=300, max_samples=1.0, max_features=0.5, bootstrap=False | 83.3% | 5.5% | 51% | 40% |
+| One-Class SVM | rbf, nu=0.1, gamma=0.3 | 97.7% | 4.8% | 89% | 95% |
+| LOF | n_neighbors=5, metric=euclidean | 98.0% | 4.8% | 92% | 95% |
+
+These were intermediate settings; Phase 5 replaced them.
+
+Interpretation:
+
+- A simple rule (any numeric value outside the training range) reaches 96.2% recall with 1.9% false positives. LOF at the 99th percentile is similar (96.4%, 1.4%). This data does not show a clear benefit of ML over simple limits.
+- Attack rows were used to choose the settings, so these are not final results.
+- Severity levels are assumptions, and `error_rate` is assumed to include SERVFAIL in the new data.
+- `data/final_test_data.csv` was kept unscored until Phase 6.
+
+### 8.6 Phase 4: Features
+
+Adding `query_rate` and `avg_latency` relative to the normal training median of the same transport and DNSSEC mode improved detection of high latency and traffic spikes. Log transforms made results worse.
+
+### 8.7 Phase 5: Tuning
+
+Development data, mean of 30 splits, 95th percentile threshold. All use the original features plus the two relative features.
+
+| Model | Selected settings | Recall | False-positive rate |
+|---|---|---:|---:|
+| LOF | n_neighbors=35, metric=manhattan | 99.5% | 5.8% |
+| One-Class SVM | rbf, nu=0.01, gamma=0.3 | 99.4% | 5.9% |
+| Isolation Forest | n_estimators=300, max_samples=1.0, max_features=0.5 | 89.9% | 6.0% |
+
+LOF and One-Class SVM are effectively tied. LOF with the 97.5th percentile threshold was fixed before the final evaluation.
+
+### 8.8 Phase 6: Final Test
+
+600 new normal rows and 624 new mild and moderate synthetic attacks. All models use the 97.5th percentile threshold.
+
+| Detector | Precision | Recall | F1 | False-positive rate |
+|---|---:|---:|---:|---:|
+| LOF (chosen) | 98.1% | 98.9% | 0.985 | 2.0% |
+| One-Class SVM | 97.0% | 98.9% | 0.979 | 3.2% |
+| Isolation Forest | 97.5% | 87.0% | 0.920 | 2.3% |
+| Range rule (relative features) | 97.9% | 98.2% | 0.981 | 2.2% |
+
+LOF missed 7 of 624 attacks (5 high latency, 1 tunneling, 1 traffic spike, all mild) and raised 12 false alarms on 600 normal rows.
+
+Limitations:
+
+- The range rule performs almost as well as LOF, so this data does not demonstrate a clear benefit of ML.
+- The final test comes from the same kind of generator as the development data. It does not show real-world performance.
+- Strong-severity attacks are not part of the final test.
+- The chosen model is saved in `models/final/model.joblib` and is not yet used by `detect.py`.
 
 ---
 
-## 12. Alert Generation and Downstream Integration
+## 9. Alert Generation and Task 8 Integration
 
-Task 7 is designed to generate structured JSON alerts that can be consumed by the project's downstream analysis component.
+Task 7 generates structured JSON alerts that can be consumed by the AI agent developed in Task 8.
 
-### 12.1 Example Alert
+Each alert contains information about the detected anomaly, its severity, the detection score and the affected target.
+
+### 9.1 Alert Structure
+
+The output follows the JSON schema provided by Task 8.
+
+Example:
 
 ```json
 {
@@ -678,9 +574,9 @@ Task 7 is designed to generate structured JSON alerts that can be consumed by th
 }
 ```
 
-### 12.2 Supported Alert Types
+### 9.2 Supported Alert Types
 
-The current shared alert schema supports:
+The current Task 8 schema supports:
 
 - flood
 - tunneling
@@ -688,28 +584,32 @@ The current shared alert schema supports:
 - amplification
 - unknown
 
-Internal detection scenarios such as DNSSEC failures and high latency may require additional mappings or schema extensions.
+Some internal detection scenarios, such as DNSSEC failures and high latency, must be mapped to the closest supported alert category or `unknown` until the shared schema is extended.
 
-### 12.3 Integration Requirements
+### 9.3 Integration Requirements
 
-- Alerts must comply with the shared JSON schema.
+- Generated alerts must comply with the Task 8 JSON schema.
 - Required fields must be present.
 - Timestamps must follow ISO 8601 format.
 - Severity must use the agreed enumeration.
-- Anomaly scores must follow the agreed score definition and range.
+- Anomaly scores must be between 0 and 1.
 - Missing source IP information must not be fabricated.
 
-The synthetic dataset does not provide a real source IP for every observation, so the prototype uses `"unknown"` when that information is unavailable.
+The current synthetic dataset does not provide a real source IP for every observation, so the prototype uses `"unknown"` when that information is unavailable.
 
-End-to-end integration and schema validation remain part of the integration work.
+Schema validation and end-to-end integration testing remain part of the integration work.
 
 ---
 
-## 13. Monitoring Data Integration
+## 10. Task 6 Integration
 
-Task 7 is designed to consume monitoring metrics collected by the DNS monitoring component.
+Task 6 is responsible for collecting and preparing DNS monitoring metrics.
+
+Task 7 is designed to consume these metrics without depending on the implementation details of the monitoring infrastructure.
 
 ### Expected input features
+
+The proposed input contract includes:
 
 - timestamp
 - transport
@@ -724,78 +624,52 @@ Task 7 is designed to consume monitoring metrics collected by the DNS monitoring
 - cpu_usage
 - memory_usage
 
-The final mapping will be adapted to the actual monitoring output.
+The final mapping will be adapted to the actual output format provided by Task 6.
 
 ### Integration objectives
 
-1. Receive monitoring data.
+1. Receive monitoring data from Task 6.
 2. Validate the input structure.
 3. Map incoming metrics to the model's expected features.
-4. Calculate the relative features using training-derived normal reference levels.
-5. Perform anomaly detection.
-6. Generate alerts for downstream analysis.
+4. Perform anomaly detection.
+5. Generate alerts for Task 8.
 
-**Important:** The normal reference levels used for relative features must be persisted alongside the trained model and reused during inference. They must not be recalculated using incoming test or production observations.
+**Note:** The input contract is provisional and must be confirmed against Task 6's actual data output.
 
 ---
 
-## 14. Limitations and Future Work
+## 11. Limitations and Future Work
 
 ### Current limitations
 
-- The current evaluation relies on synthetic data.
-- The attack generator may produce overly predictable anomaly patterns.
-- Generalization to unseen attacks has not yet been established.
-- The range-based detector currently outperforms ML models in false-positive rate.
-- Some anomaly scenarios remain more difficult to detect than others.
+- The model is currently evaluated using synthetic data.
+- The dataset does not cover every possible DNS attack.
+- Some attack scenarios are not consistently detected.
 - Real source IP information is not yet integrated.
-- Alert classification and severity mapping require further validation.
-- End-to-end integration remains incomplete.
+- The detection threshold in the current detection pipeline requires independent validation.
+- The current alert mapping does not represent every internal anomaly category.
 
-### Next development priorities
+### Future improvements
 
-**1. Independent generalization testing**
-
-Generate a new evaluation dataset with different seeds, overlapping normal and attack distributions, and less predictable attack behavior.
-
-**2. Stronger baseline comparisons**
-
-Compare ML algorithms against simple range-based and domain-specific rule-based detectors.
-
-**3. Feature engineering validation**
-
-Evaluate whether relative features remain useful when attack patterns do not simply multiply normal values.
-
-**4. Unusual feature combinations**
-
-Introduce anomalies that remain within individual normal feature ranges but exhibit unusual combinations of metrics. This can help evaluate whether multivariate ML detection provides an advantage over independent thresholds.
-
-**5. Model selection**
-
-Select a final model based on independent recall, false-positive rate, precision, inference time and scenario-level performance.
-
-**6. Real monitoring data**
-
-Test the detection pipeline using actual DNS monitoring metrics.
-
-**7. Integration**
-
-Validate generated alerts against the shared JSON schema and perform end-to-end integration tests.
-
-**8. Temporal anomaly detection**
-
-Investigate time-dependent traffic behavior and sudden changes that cannot be captured by isolated observations.
+- Implement and evaluate the hybrid ML and rule-based detection approach.
+- Improve detection of DNSSEC failures, high latency and traffic spikes.
+- Test with real DNS monitoring data from Task 6.
+- Investigate external DNS datasets for additional benchmarking.
+- Validate generated alerts against the Task 8 JSON schema.
+- Perform end-to-end testing with the AI agent.
+- Evaluate detection performance on unseen traffic.
+- Investigate temporal anomaly detection and traffic behavior over time.
 
 ---
 
-## 15. Technologies Used
+## 12. Technologies Used
 
 | Technology | Purpose |
 |---|---|
 | Python | Main implementation language. |
 | Pandas | Dataset manipulation and analysis. |
 | NumPy | Numerical operations. |
-| Scikit-learn | Preprocessing and anomaly detection algorithms. |
+| Scikit-learn | Preprocessing and Isolation Forest. |
 | Joblib | Model persistence. |
 | Matplotlib | Data visualization. |
 | Seaborn | Statistical visualizations, if used. |
@@ -804,16 +678,16 @@ Investigate time-dependent traffic behavior and sudden changes that cannot be ca
 
 ---
 
-## 16. Conclusion
+## 13. Conclusion
 
-Task 7 has evolved from an initial Isolation Forest prototype into a comparative anomaly detection framework evaluating multiple unsupervised learning algorithms and feature engineering strategies.
+Task 7 provides the machine learning-based anomaly detection component of the secure DNS laboratory project.
 
-Phase 3 established a common experimental methodology for comparing Isolation Forest, One-Class SVM and Local Outlier Factor.
+The initial implementation establishes a baseline using Isolation Forest, evaluates its behavior across multiple simulated DNS scenarios, and investigates the causes of detection errors.
 
-Phase 4 investigated transport- and DNSSEC-aware relative features, improving detection performance, particularly for high-latency anomalies.
-
-However, comparison against a simple range-based detector revealed that machine learning does not yet demonstrate a clear advantage on the current synthetic dataset.
-
-The next stage focuses on independent evaluation using more challenging data, testing generalization to unseen anomaly patterns, and determining whether multivariate machine learning provides measurable value beyond simpler detection rules.
+The next development phase focuses on improving detection coverage through hybrid anomaly detection, integrating real monitoring metrics from Task 6, and ensuring compatibility with the alert-processing architecture of Task 8.
 
 The overall objective is to deliver a modular, extensible and measurable DNS anomaly detection component that contributes to the monitoring and resilience of the laboratory DNS infrastructure.
+
+---
+
+ 
