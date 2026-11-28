@@ -1,0 +1,27 @@
+{
+  "model": "LocalOutlierFactor",
+  "model_params": {
+    "n_neighbors": 35,
+    "metric": "manhattan",
+    "novelty": true
+  },
+  "features": [
+    "transport",
+    "dnssec",
+    "query_rate",
+    "avg_latency",
+    "error_rate",
+    "servfail_rate",
+    "nxdomain_rate",
+    "avg_response_size",
+    "unique_domain_ratio",
+    "cpu_usage",
+    "memory_usage"
+  ],
+  "threshold": -0.27789141576425586,
+  "threshold_quantile": 0.975,
+  "seed": 42,
+  "training_rows": 630,
+  "calibration_rows": 135,
+  "sklearn_version": "1.9.1"
+}
