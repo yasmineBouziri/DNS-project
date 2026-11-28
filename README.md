@@ -206,6 +206,17 @@ The proposed hybrid architecture aims to retain the flexibility of machine learn
 
 This approach is currently under investigation and its final performance has not yet been established.
 
+### 4.5 Model Comparison (Phase 3)
+
+Isolation Forest, One-Class SVM and Local Outlier Factor (`novelty=True`) are compared on the same features and splits. Shared logic is in `src/common.py`.
+
+- Normal rows are split 70% training, 15% calibration, 15% testing, stratified by transport and DNSSEC.
+- Models are fitted on normal rows only; the threshold is the 95th percentile of calibration scores.
+- SVM and LOF use standard-scaled numeric features.
+- Results are averaged over 30 splits.
+
+**Note:** `train_model.py` and `detect.py` still use the original Isolation Forest pipeline (70/30 split). No new model has been adopted yet.
+
 ---
 
 ## 5. Project Structure
@@ -215,20 +226,38 @@ dns-anomaly-detection/
 │
 ├── data/
 │   ├── simulated_dns_data.csv
+│   ├── train_data.csv
+│   ├── calibration_data.csv
+│   ├── test_data.csv
+│   ├── dev_attacks.csv
+│   ├── final_test_data.csv
 │   └── real_dns_data.csv
 │
 ├── models/
-│   └── isolation_forest.joblib
+│   ├── isolation_forest.joblib
+│   ├── isolation_forest/
+│   ├── one_class_svm/
+│   └── lof/
 │
 ├── results/
 │   ├── detections.csv
 │   ├── alerts.json
 │   ├── evaluation.csv
 │   ├── test_data.csv
-│   └── graphs/
+│   ├── graphs/
+│   └── phase3/
 │
 ├── src/
 │   ├── generate_data.py
+│   ├── generate_phase3_data.py
+│   ├── common.py
+│   ├── prepare_data.py
+│   ├── train_isolation_forest.py
+│   ├── train_one_class_svm.py
+│   ├── train_lof.py
+│   ├── compare_models.py
+│   ├── investigate_parameters.py
+│   ├── plot_phase3.py
 │   ├── train_model.py
 │   ├── detect.py
 │   ├── evaluate_model.py
@@ -251,6 +280,13 @@ dns-anomaly-detection/
 | visualize.py | Generates graphs and visual representations of results. |
 | validate_data.py | Checks dataset structure, feature types and data validity. |
 | inspect_errors.py | Investigates missed detections and false positives. |
+| common.py | Shared features, splits, preprocessing and threshold calibration. |
+| prepare_data.py | Saves the training, calibration and test files. |
+| train_isolation_forest.py, train_one_class_svm.py, train_lof.py | Train and save one candidate model each. |
+| compare_models.py | Compares the three models and writes metrics and graphs. |
+| generate_phase3_data.py | Generates milder development attacks and a reserved final test set. |
+| investigate_parameters.py | Runs the parameter, scaling, threshold and per-mode checks. |
+| plot_phase3.py | Plots the threshold trade-off. |
 
 ---
 
@@ -353,6 +389,19 @@ python src/visualize.py
 python src/inspect_errors.py
 ```
 
+### Model comparison experiments (Phase 3)
+
+```bash
+python src/prepare_data.py
+python src/train_isolation_forest.py
+python src/train_one_class_svm.py
+python src/train_lof.py
+python src/compare_models.py
+python src/generate_phase3_data.py
+python src/investigate_parameters.py
+python src/plot_phase3.py
+```
+
 ---
 
 ## 8. Experimental Results
@@ -425,6 +474,25 @@ Further evaluation will use separate training, calibration and final testing dat
 The synthetic dataset is also relatively small and does not reproduce every characteristic of real DNS traffic.
 
 The results should therefore not be interpreted as production-level detection performance.
+
+### 8.5 Phase 3: Parameter Investigation
+
+Development results on 780 synthetic mild and moderate attacks, mean of 30 splits, 95th percentile threshold. Recall is the average over the seven scenarios.
+
+| Model | Selected settings | Recall | False-positive rate | High latency | Traffic spike |
+|---|---|---:|---:|---:|---:|
+| Isolation Forest | n_estimators=300, max_samples=1.0, max_features=0.5, bootstrap=False | 83.3% | 5.5% | 51% | 40% |
+| One-Class SVM | rbf, nu=0.1, gamma=0.3 | 97.7% | 4.8% | 89% | 95% |
+| LOF | n_neighbors=5, metric=euclidean | 98.0% | 4.8% | 92% | 95% |
+
+These settings are not yet applied in `common.py`.
+
+Interpretation:
+
+- A simple rule (any numeric value outside the training range) reaches 96.2% recall with 1.9% false positives. LOF at the 99th percentile is similar (96.4%, 1.4%). This data does not show a clear benefit of ML over simple limits.
+- Attack rows were used to choose the settings, so these are not final results.
+- Severity levels are assumptions, and `error_rate` is assumed to include SERVFAIL in the new data.
+- `data/final_test_data.csv` has not been scored and is reserved for the final evaluation.
 
 ---
 
@@ -529,7 +597,7 @@ The final mapping will be adapted to the actual output format provided by Task 6
 - The dataset does not cover every possible DNS attack.
 - Some attack scenarios are not consistently detected.
 - Real source IP information is not yet integrated.
-- The detection threshold requires independent validation.
+- The detection threshold in the current detection pipeline requires independent validation.
 - The current alert mapping does not represent every internal anomaly category.
 
 ### Future improvements
@@ -572,4 +640,3 @@ The next development phase focuses on improving detection coverage through hybri
 The overall objective is to deliver a modular, extensible and measurable DNS anomaly detection component that contributes to the monitoring and resilience of the laboratory DNS infrastructure.
 
 ---
-
