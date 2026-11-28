@@ -1,0 +1,7 @@
+model,config,params
+isolation_forest,initial,{'n_estimators': 150}
+isolation_forest,selected,"{'n_estimators': 300, 'max_samples': 1.0, 'max_features': 0.5, 'bootstrap': False}"
+one_class_svm,initial,"{'kernel': 'rbf', 'nu': 0.05, 'gamma': 'scale'}"
+one_class_svm,selected,"{'kernel': 'rbf', 'nu': 0.1, 'gamma': 0.3}"
+lof,initial,"{'n_neighbors': 20, 'metric': 'euclidean'}"
+lof,selected,"{'n_neighbors': 5, 'metric': 'euclidean'}"
